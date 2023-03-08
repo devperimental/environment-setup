@@ -20,14 +20,14 @@ variable "encrypt_type" {
   default     = "KMS"
 }
 
-variable "aws_access_key" {
-  description = "AWS access key"
+variable "AWS_ACCESS_KEY_ID" {
+  description = "AWS ACCESS KEY ID"
   type        = string
   sensitive   = true
 }
 
-variable "aws_secret_key" {
-  description = "AWS secret key"
+variable "AWS_SECRET_ACCESS_KEY" {
+  description = "AWS SECRET ACCESS KEY"
   type        = string
   sensitive   = true
 }
