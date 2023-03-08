@@ -6,8 +6,8 @@ on:
       - main
   pull_request:
 env:
-  TF_VAR_AWS_ACCESS_KEY: ${{ secrets.TF_VAR_AWS_ACCESS_KEY}}
-  TF_VAR_AWS_SECRET_KEY: ${{ secrets.TF_VAR_AWS_SECRET_KEY}}
+  AWS_ACCESS_KEY: ${{ secrets.TF_VAR_AWS_ACCESS_KEY}}
+  AWS_SECRET_KEY: ${{ secrets.TF_VAR_AWS_SECRET_KEY}}
 jobs:
   terraform:
     name: "Terraform"
@@ -39,7 +39,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -no-color -input=false
+        run: terraform plan -no-color -input=false -var="AWS_ACCESS_KEY=${{var.AWS_ACCESS_KEY}}" -var="AWS_SECRET_KEY=${{var.AWS_SECRET_KEY}}"
         continue-on-error: true
 
       - name: Update Pull Request
